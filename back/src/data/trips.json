@@ -1,0 +1,13 @@
+{
+  "trips": [
+    {
+      "id": "123",
+      "agency_name": "nombre",
+      "origin_city": "New York",
+      "destination_city": "San Francisco",
+      "dates": "2022/12/20 - 2022/12/25",
+      "price": 550,
+      "destination_image": "asdfasdfj;a"
+    }
+  ]
+}

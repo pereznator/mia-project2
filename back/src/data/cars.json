@@ -1,0 +1,13 @@
+{
+  "cars": [
+    {
+      "license_plate": "ABC123",
+      "brand": "Toyota",
+      "agency_name": "cars",
+      "model": "Corolla",
+      "price": 250,
+      "city": "London",
+      "picture": "asdfasdfasf"
+    }
+  ]
+}

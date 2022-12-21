@@ -1,0 +1,15 @@
+.vert-align {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 45%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.middle {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+}
