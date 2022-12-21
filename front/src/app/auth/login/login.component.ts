@@ -8,22 +8,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loading = false;
   loginForm: FormGroup = this.fb.group({
     email: [null, [Validators.required]],
     password: [null, [Validators.required]],
-  });;
+  });
 
-  constructor(private fb: FormBuilder) {
-  }
-
-  ngOnInit(): void {}
+  constructor(private fb: FormBuilder) { }
 
   get notValidEmail(): boolean {
-    return this.loginForm.get('email').invalid && this.loginForm.get('email').touched;
+    return this.loginForm.get("email").touched && this.loginForm.get("email").invalid;
   }
+
   get notValidPassword(): boolean {
-    return this.loginForm.get('password').invalid && this.loginForm.get('password').touched;
+    return this.loginForm.get("password").touched && this.loginForm.get("password").invalid;
+  }
+
+  ngOnInit(): void {
   }
 
   submitForm(): void {
@@ -31,6 +31,5 @@ export class LoginComponent implements OnInit {
       return this.loginForm.markAllAsTouched();
     }
   }
-
 
 }
