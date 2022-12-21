@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "123",
+      "type": "admin",
+      "name": "Jorge Perez",
+      "username": "jorigot",
+      "email": "jorigot.2000@gmail.com",
+      "password": "1234",
+      "picture": "asdfasdfasd;fkjasd;"
+    },
+    {
+      "id": "1232334",
+      "type": "tourist",
+      "name": "Guillermo Santos",
+      "username": "dath",
+      "email": "guille@gmail.com",
+      "password": "fgdfgadgs",
+      "picture": "asdfasdfasd;fkjasd;"
+    },
+    {
+      "id": "1423423",
+      "type": "receptionist",
+      "name": "Pam Beesly",
+      "username": "pamy",
+      "email": "pam.beesly@gmail.com",
+      "password": "fsdjkkldsaf123",
+      "picture": "asdfasdfasd;fkjasd;"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "user-trip": [
+    {
+      "id": "1234324",
+      "user_id": "123refds",
+      "trip_id": "34rfds",
+      "accepted": false
+    }
+  ]
+}

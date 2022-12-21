@@ -1,0 +1,16 @@
+{
+  "user-car": [
+    {
+      "id": "123233",
+      "user_id": "234213",
+      "liscence_plate": "ABC123",
+      "accepted": false
+    },
+    {
+      "id": "fdsa234",
+      "user_id": "3dfgvadfs",
+      "liscence_plate": "45trgf",
+      "accepted": true
+    }
+  ]
+}

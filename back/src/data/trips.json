@@ -1,0 +1,13 @@
+{
+  "trips": [
+    {
+      "id": "1232",
+      "agency": "The Office",
+      "origin_city": "New York",
+      "destination_city": "San Francisco",
+      "days": "2022/12/20 - 2022/12/25",
+      "price": 500,
+      "picture": "fhsdafasdf"
+    }
+  ]
+}
