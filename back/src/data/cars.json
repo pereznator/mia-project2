@@ -7,6 +7,22 @@
       "model": "Corolla",
       "price": 250,
       "city": "London"
+    },
+    {
+      "liscence_plate": "RTX4200",
+      "agency": "AgencyX1",
+      "brand": "Mitsubishi",
+      "model": "Lancer",
+      "price": "60",
+      "city": "New York"
+    },
+    {
+      "liscence_plate": "3DF3DF",
+      "agency": "agencia21",
+      "brand": "Mercedes",
+      "model": "g500",
+      "price": "699",
+      "city": "Dubai"
     }
   ]
 }

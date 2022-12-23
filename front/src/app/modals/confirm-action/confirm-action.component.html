@@ -1,0 +1,25 @@
+<!-- ==== BEGIN MODAL HEADER ==== -->
+<div class="modal-header">
+  <h2 class="in-heading-secondary">{{ title ? title : 'Confirmar Accion'}}</h2>
+</div>
+<!-- ==== END MODAL HEADER ==== -->
+
+
+
+<!-- ==== BEGIN MODAL BODY ==== -->
+<div class="modal-body">
+  <p class="in-text">{{i}}</p>
+</div>
+<!-- END MODAL BODY -->
+
+
+
+<!-- ==== BEGIN MODAL FOOTER -->
+<div class="modal-footer">
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-secondary" style="margin-right: 10px" (click)="activeModal.dismiss('Close click')">Cancelar</button>
+  
+    <button type="button" class="btn btn-primary" (click)="activeModal.close('Ok click')">Confirmo</button>
+  </div>
+</div>
+<!-- ==== END MODAL FOOTER -->

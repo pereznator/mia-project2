@@ -10,9 +10,11 @@
   "author": "jorge perez",
   "license": "ISC",
   "dependencies": {
+    "amazon-cognito-identity-js": "^6.1.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

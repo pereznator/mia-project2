@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-9">
+      <h1>Viajes</h1>
+    </div>
+    <div class="col-md-2">
+      <div class="d-grid gap-2" *ngIf="authService.type === USER_TYPES.ADMIN">
+        <button class="btn btn-success" (click)="createTrip()">Crear Viaje</button>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="d-grid gap-2">
+        <button class="btn btn-secondary" (click)="goBack()">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="buscar" [(ngModel)]="search" (keyup.enter)="searchTrips()">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-info" style="margin-right: 10px" (click)="searchTrips()">Buscar</button>
+      <button class="btn btn-secondary" (click)="resetSearch()">Reset</button>
+    </div>
+  </div>
+  <table class="table mt-3">
+    <thead class="table-dark">
+      <tr>
+        <th class="colum-tab">Agencia</th>
+        <th>Ciudad Origen</th>
+        <th>Ciudad Destino</th>
+        <th>Dias de Vuelo</th>
+        <th>Precio</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="!loading">
+      <tr *ngFor="let trip of trips">
+        <td class="colum-tab">{{trip.agency}}</td>
+        <td>{{trip.origin_city}}</td>
+        <td>{{trip.destination_city}}</td>
+        <td>{{trip.days}}</td>
+        <td>{{trip.price}}</td>
+        <td>
+          <button class="btn btn-outline-danger" *ngIf="authService.type === USER_TYPES.ADMIN" (click)="removeTrip(trip.id)">Eliminar</button>
+          <button class="btn btn-outline-success" *ngIf="authService.type === USER_TYPES.TOURIST" (click)="requestTrip(trip.id)">Reservar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

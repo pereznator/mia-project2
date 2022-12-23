@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-9">
+      <h1>Crear Viaje</h1>
+    </div>
+    <div class="col-md-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" (click)="createTrip()">Guardar Viaje</button>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="d-grid gap-2">
+        <button class="btn btn-secondary" (click)="goBack()">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <form [formGroup]="tripForm">
+    <div class="row mt-5">
+      <div class="col-md">
+        <label for="agency" class="form-label">Agencia</label>
+        <input type="text" class="form-control" id="agency" placeholder="Agencia" formControlName="agency" [ngClass]="{'is-invalid': notValidAgency}">
+      </div>
+      <div class="col-md">
+        <label for="originCity" class="form-label">Ciudad de Origen</label>
+        <input type="text" class="form-control" id="originCity" placeholder="ciudad de origen" formControlName="originCity" [ngClass]="{'is-invalid': notValidOriginCity}">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md">
+        <label for="destinationCity" class="form-label">Ciudad Destino</label>
+        <input type="text" class="form-control" id="destinationCity" placeholder="ciudad destino" formControlName="destinationCity" [ngClass]="{'is-invalid': notValidDestinationCity}">
+      </div>
+      <div class="col-md">
+        <label for="days" class="form-label">Días</label>
+        <input type="text" class="form-control" id="days" placeholder="YYYY/MM/DD - YYYY/MM/DD" formControlName="days" [ngClass]="{'is-invalid': notValidDays}">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md">
+        <label for="price" class="form-label">Precio</label>
+        <input type="text" class="form-control" id="price" placeholder="$$" formControlName="price" [ngClass]="{'is-invalid': notValidPrice}">
+      </div>
+      <div class="col-md">
+        <label for="picture" class="form-label">Imagen</label>
+        <input type="text" class="form-control" id="picture" placeholder="imagen" formControlName="picture">
+      </div>
+    </div>
+  </form>
+  <div class="alert alert-danger mt-3" *ngIf="error">
+    <p>{{errorMessage}}</p>
+  </div>
+</div>

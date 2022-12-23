@@ -1,1 +1,67 @@
-<p>register works!</p>
+<div class="vert-align">
+  <div class="middle bg-light p-5">
+    <h3>Registrarse</h3>
+    <form class="login-form" [formGroup]="registerForm">
+      <div class="row">
+        <div class="col-md">
+          <div class="form-floating mb-3">
+            <input type="text" placeholder="asdf" class="form-control" id="nameInput" formControlName="name" [ngClass]="{'is-invalid': notValidName}">
+            <label for="nameInput">Nombre Completo</label>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating mb-3">
+            <input type="text" placeholder="asdf" class="form-control" id="usernameInput" formControlName="username" [ngClass]="{'is-invalid': notValidUsername}">
+            <label for="usernameInput">Nombre de Usuario</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" [ngClass]="{'is-invalid': notValidEmail}">
+            <label for="floatingInput">Correo Electronico / Usuario</label>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="pictureInput" placeholder="name@example.com" formControlName="picture" [ngClass]="{'is-invalid': notValidPicture}">
+            <label for="pictureInput">Foto de Perfil</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': notValidPassword}">
+            <label for="floatingPassword">Contraseña</label>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="password" class="form-control" id="repeatInput" placeholder="Password" formControlName="repeatPassword" [ngClass]="{'is-invalid': notValidRepeat}">
+            <label for="repeatInput">Repetir Contraseña</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-3">
+          <a class="btn" routerLink="/login">
+            <small class="text-primary">Ya tienes cuanta?</small>
+          </a>
+        </div>
+        <div class="col-7"></div>
+        <div class="col-2">
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary" (click)="submitForm()">
+              Ingresar
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-danger mt-3" *ngIf="error">
+        <p>{{errorMessage}}</p>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-9">
+      <h1>Agregar Auto</h1>
+    </div>
+    <div class="col-md-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" (click)="submitForm()">Guardar Viaje</button>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="d-grid gap-2">
+        <button class="btn btn-secondary" (click)="goBack()">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <form [formGroup]="carForm">
+    <div class="row mt-3">
+      <div class="col-md">
+        <label for="agency" class="form-label">Agencia</label>
+        <input type="text" class="form-control" id="agency" placeholder="Agencia" formControlName="agency" [ngClass]="{'is-invalid': notValidAgency}">
+      </div>
+      <div class="col-md">
+        <label for="liscencePlate" class="form-label">Placa</label>
+        <input type="text" class="form-control" id="liscencePlate" placeholder="ABC123" formControlName="liscencePlate" [ngClass]="{'is-invalid': notValidLiscencePlate}">
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md">
+        <label for="brand" class="form-label">Marca</label>
+        <input type="text" class="form-control" id="brand" placeholder="marca" formControlName="brand" [ngClass]="{'is-invalid': notValidBrand}">
+      </div>
+      <div class="col-md">
+        <label for="model" class="form-label">Modelo</label>
+        <input type="text" class="form-control" id="model" placeholder="modelo" formControlName="model" [ngClass]="{'is-invalid': notValidModel}">
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md">
+        <label for="price" class="form-label">Precio</label>
+        <input type="text" class="form-control" id="price" placeholder="$$" formControlName="price" [ngClass]="{'is-invalid': notValidPrice}">
+      </div>
+      <div class="col-md">
+        <label for="city" class="form-label">Ciudad</label>
+        <input type="text" class="form-control" id="city" placeholder="ciudad" formControlName="city" [ngClass]="{'is-invalid': notValidCity}">
+      </div>
+    </div>
+  </form>
+</div>

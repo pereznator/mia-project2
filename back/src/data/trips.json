@@ -8,6 +8,24 @@
       "days": "2022/12/20 - 2022/12/25",
       "price": 500,
       "picture": "fhsdafasdf"
+    },
+    {
+      "id": "47080eb6-c788-4e08-b019-e462f95a86a6",
+      "agency": "La agencia",
+      "origin_city": "Guatemala",
+      "destination_city": "Los Angeles",
+      "days": "2022/12/25 - 2022/12/31",
+      "price": "699",
+      "picture": "ASDFASDFASDFASDF"
+    },
+    {
+      "id": "4a617299-ddf6-4ecd-8ea0-6ece5806e3ef",
+      "agency": "G Trips",
+      "origin_city": "Qatar",
+      "destination_city": "Ankara",
+      "days": "2022/12/25 - 2022/12/31",
+      "price": "1500",
+      "picture": null
     }
   ]
 }
