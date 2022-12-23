@@ -58,6 +58,59 @@ class TripsService {
     return [tripIndex, null];
   }
 
+  async reserveTrip(userId, tripId) {
+    const userTrips = await dataService.getUserTrips();
+    if (!userTrips) {
+      return [null, "No se encontraron solicitudes de viajes"];
+    }
+    const foundRequest = userTrips.find(trip => trip.trip_id === tripId && trip.user_id);
+    if (foundRequest) {
+      return [null, "Ya has reservado el viaje seleccionado."];
+    }
+    const newRequest = {
+      id: uuid(),
+      user_id: userId,
+      trip_id: tripId,
+      approved: false
+    };
+
+    userTrips.push(newRequest);
+    await dataService.saveUserTrips(userTrips);
+    return [newRequest, null];
+  }
+
+  async getUserTrips(userId) {
+    const allUserTrips = await dataService.getUserTrips();
+    if (!allUserTrips) {
+      return [null, "No se encontraron solicitudes de viajes."];
+    }
+    const userReserves = allUserTrips.filter(userTrip => userTrip.user_id === userId);
+    if (!userReserves) {
+      return [null, "Error al buscar tus solicitudes."];
+    }
+    if (userReserves.length === 0) {
+      return [[], null];
+    }
+    const allTrips = await dataService.getTrips();
+    if (!allTrips) {
+      return [null, "No se pudieron encontrar viajes"];
+    }
+    let userTrips = allTrips.filter(trip => userReserves.map(userTrip => userTrip.trip_id).includes(trip.id));
+    userTrips = userTrips.map(userTrip => {
+      const userRequest = userReserves.find(reserve => reserve.trip_id === userTrip.id);
+      return {
+        ...userTrip,
+        approved: userRequest.approved,
+        id: userRequest.id
+      }
+    });
+
+    if (!userTrips) {
+      return [null, "Error al buscar tus solicitudes."];
+    }
+    return [userTrips, null];
+  }
+
 }
 
 module.exports = new TripsService();

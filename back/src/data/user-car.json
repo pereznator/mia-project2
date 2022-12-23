@@ -11,6 +11,18 @@
       "user_id": "3dfgvadfs",
       "liscence_plate": "45trgf",
       "accepted": true
+    },
+    {
+      "id": "01669f42-537e-4484-b533-b1b6aaf9bea1",
+      "liscence_plate": "3DF3DF",
+      "user_id": "428ba80a-40f1-4108-b0ef-e076df379d15",
+      "approved": false
+    },
+    {
+      "id": "b3f8a9ce-cefb-4a3f-85cf-c4dc12682b6c",
+      "liscence_plate": "RTX4200",
+      "user_id": "428ba80a-40f1-4108-b0ef-e076df379d15",
+      "approved": false
     }
   ]
 }

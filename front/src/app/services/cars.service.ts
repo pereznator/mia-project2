@@ -9,8 +9,8 @@ export class CarsService {
 
   constructor(private serverService: ServerService) { }
 
-  getCars(): Observable<any> {
-    return this.serverService.request("GET", "/cars");
+  getCars(params): Observable<any> {
+    return this.serverService.request("GET", "/cars", null, params);
   }
 
   addNewCar(carBody: any): Observable<any> {
@@ -19,6 +19,14 @@ export class CarsService {
 
   removeCar(liscencePlate: string): Observable<any> {
     return this.serverService.request("DELETE", `/cars/${liscencePlate}`, {});
+  }
+
+  reserveCar(liscencePlate: string): Observable<any> {
+    return this.serverService.request("POST", `/cars/reserves/${liscencePlate}`, {});
+  }
+
+  getCarRequests(): Observable<any> {
+    return this.serverService.request("GET", "/cars/reserves");
   }
 
 }

@@ -25,7 +25,7 @@
         <ng-container *ngIf="user.type === USER_TYPES.TOURIST">
           <h2>Gestionar Solicitudes</h2>
           <p>Ver mis solicitudes de viajes que han sido aceptadas y las que estan pendientes.</p>
-          <button class="btn btn-outline-light" type="button">Ver Solicitudes</button>
+          <button class="btn btn-outline-light" type="button" (click)="navigateTo('requests')">Ver Solicitudes</button>
         </ng-container>
       </div>
     </div>

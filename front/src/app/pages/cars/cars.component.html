@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-2">
       <div class="d-grid gap-2">
-        <button class="btn btn-success" (click)="addCar()">Agregar Auto</button>
+        <button class="btn btn-success" *ngIf="authService.type === USER_TYPES.ADMIN" (click)="addCar()">Agregar Auto</button>
       </div>
     </div>
     <div class="col-md-1">
@@ -15,7 +15,16 @@
     </div>
   </div>
   <hr>
-  <table class="table">
+  <div class="row">
+    <div class="col-md-3">
+      <input type="text" class="form-control" placeholder="buscar" [(ngModel)]="search" (keyup.enter)="searchCars()">
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-info" style="margin-right: 10px" (click)="searchCars()">Buscar</button>
+      <button class="btn btn-secondary" (click)="resetSearch()">Reset</button>
+    </div>
+  </div>
+  <table class="table mt-3">
     <thead class="table-dark">
       <tr>
         <th class="colum-tab">Placa</th>
@@ -36,7 +45,8 @@
         <td>{{car.price}}</td>
         <td>{{car.city}}</td>
         <td>
-          <button class="btn btn-outline-danger" (click)="removeCar(car.liscence_plate)">Eliminar</button>
+          <button class="btn btn-outline-danger" *ngIf="authService.type === USER_TYPES.ADMIN" (click)="removeCar(car.liscence_plate)">Eliminar</button>
+          <button class="btn btn-outline-success" *ngIf="authService.type === USER_TYPES.TOURIST" (click)="reserveCar(car.liscence_plate)">Reservar</button>
         </td>
       </tr>
     </tbody>

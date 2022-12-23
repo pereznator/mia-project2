@@ -70,8 +70,8 @@ class DataService {
   async getUserTrips() {
     const readFile = util.promisify(fs.readFile);
     const fileData = await readFile(require.resolve("../data/user-trip.json"));
-    const userTip = JSON.parse(fileData).userTip;
-    return userTip;
+    const userTrip = JSON.parse(fileData).userTrip;
+    return userTrip;
   }
 
   async saveUserTrips(userTrips) {

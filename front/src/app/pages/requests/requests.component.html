@@ -1,1 +1,71 @@
-<p>requests works!</p>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-11">
+      <h1>Solicitudes</h1>
+    </div>
+    <div class="col-md-1">
+      <div class="d-grid gap-2">
+        <button class="btn btn-secondary">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" (click)="onChangeView('trips')" [ngClass]="{'active': showingNow === 'trips'}">Viajes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="onChangeView('cars')" [ngClass]="{'active': showingNow === 'cars'}">Autos</a> 
+    </li>
+  </ul>
+  <ng-container *ngIf="showingNow === 'trips'">
+    <table class="table mt-3" *ngIf="!loading">
+      <thead class="table-dark">
+        <tr>
+          <th class="colum-tab">Agencia</th>
+          <th>Ciudad Origen</th>
+          <th>Ciudad Destino</th>
+          <th>Dias de Vuelo</th>
+          <th>Precio</th>
+          <th>Estatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let req of requests">
+          <td class="colum-tab">{{req.agency}}</td>
+          <td>{{req.origin_city}}</td>
+          <td>{{req.destination_city}}</td>
+          <td>{{req.days}}</td>
+          <td>{{req.price}}</td>
+          <td>{{req.approved ? "Aprovado" : "No Aprobado"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <ng-container *ngIf="showingNow === 'cars'">
+    <table class="table mt-3">
+      <thead class="table-dark">
+        <tr>
+          <th class="colum-tab">Placa</th>
+          <th>Agencia</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Precio</th>
+          <th>Ciudad</th>
+          <th>Estatus</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="!loading">
+        <tr *ngFor="let car of carRequests">
+          <td class="colum-tab">{{car.liscence_plate}}</td>
+          <td>{{car.agency}}</td>
+          <td>{{car.brand}}</td>
+          <td>{{car.model}}</td>
+          <td>{{car.price}}</td>
+          <td>{{car.city}}</td>
+          <td>{{car.status ? "Aprobado" : "No Aprobado"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>

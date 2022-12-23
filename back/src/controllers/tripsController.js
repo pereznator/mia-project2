@@ -51,9 +51,46 @@ const removeTrip = async (req, res) => {
   }
 };
 
+const reserveTrip = async (req, res) => {
+  try {
+    const { tripId } = req.params;
+    const userId = req.user.id;
+    const [newUserTrip, error] = await tripsService.reserveTrip(userId, tripId);
+    if (error) {
+      errorMessage.error = error;
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+    successMessage.data = newUserTrip;
+    return res.status(successMessage.status).send(successMessage);
+  } catch (err) {
+    console.log(err);
+    errorMessage = DEFAULT_ERROR_MESSAGE;
+    return res.status(errorMessage.status).send(errorMessage);
+  }
+};
+
+const getUserTrips = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const [userTrips, error] = await tripsService.getUserTrips(userId);
+    if (error) {
+      errorMessage.error = error;
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+    successMessage.data = userTrips;
+    return res.status(successMessage.status).send(successMessage);
+  } catch (err) {
+    console.log(err);
+    errorMessage = DEFAULT_ERROR_MESSAGE;
+    return res.status(errorMessage.status).send(errorMessage);
+  }
+};
+
 
 module.exports = {
   getAllTrips,
   createTrip,
-  removeTrip
+  removeTrip,
+  reserveTrip,
+  getUserTrips
 };

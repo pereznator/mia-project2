@@ -22,7 +22,10 @@ export class TripsService {
   }
   
   reserveTrip(tripId: string): Observable<any> {
-    return this.serverService.request("POST", `/trips/reserve/${tripId}`, {});
+    return this.serverService.request("POST", `/trips/reserves/${tripId}`, {});
+  }
+  getRequests(): Observable<any> {
+    return this.serverService.request("GET", "/trips/reserves");
   }
 
 }

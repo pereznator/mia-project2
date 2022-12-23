@@ -91,7 +91,7 @@ export class TripsComponent implements OnInit {
     modal.componentInstance.title = "Reservar Viaje";
     modal.result.then(result => {
       this.tripsService.reserveTrip(tripId).pipe(take(1), map(resp =>resp.data)).subscribe(resp => {
-        this.toastService.showSuccess("Viaje eliminado con exito!");
+        this.toastService.showSuccess("Solicitud de reserva enviado exitosamente!");
         this.getTrips();
       }, err => {
         console.log(err);
