@@ -1,64 +1,63 @@
 {
-  "users": [
-    {
-      "id": "123",
-      "type": "admin",
-      "name": "Jorge Perez",
-      "username": "jorigot",
-      "email": "jorigot.2000@gmail.com",
-      "password": "1234",
-      "picture": "asdfasdfasd;fkjasd;",
-      "verified": true
-    },
-    {
-      "id": "1423423",
-      "type": "receptionist",
-      "name": "Pam Beesly",
-      "username": "pamy",
-      "email": "pam.beesly@gmail.com",
-      "password": "fsdjkkldsaf123",
-      "picture": "asdfasdfasd;fkjasd;",
-      "verified": false
-    },
-    {
-      "id": "6208904e-d748-4755-84ae-aa5155298700",
-      "name": "jorigin",
-      "username": "pereznator",
-      "type": "tourist",
-      "email": "asdasfdffdfdf",
-      "picture": "asdf",
-      "password": "1234",
-      "verified": false
-    },
-    {
-      "id": "e61214ac-30d2-45d7-9023-2de872eb291d",
-      "name": "Antonio Perez",
-      "username": "antoniolj07",
-      "type": "tourist",
-      "email": "antoniolj@gmail.com",
-      "picture": null,
-      "password": "123",
-      "verified": false
-    },
-    {
-      "id": "c5a440e5-ed05-4da9-b8a4-508d1b3438e3",
-      "name": "Tony Montana",
-      "username": "tonyM",
-      "type": "receptionist",
-      "email": "tony.montanta@gmail.com",
-      "picture": "asdfasdf",
-      "password": "!Contra123",
-      "verified": false
-    },
-    {
-      "id": "428ba80a-40f1-4108-b0ef-e076df379d15",
-      "name": "Ryan Howard",
-      "username": "RyanH",
-      "type": "tourist",
-      "email": "ryan.howrad@gmail.com",
-      "picture": null,
-      "password": "1234",
-      "verified": true
-    }
-  ]
+    "users": [{
+            "id": "123",
+            "type": "admin",
+            "name": "Jorge Perez",
+            "username": "jorigot",
+            "email": "jorigot.2000@gmail.com",
+            "password": "1234",
+            "picture": "asdfasdfasd;fkjasd;",
+            "verified": true
+        },
+        {
+            "id": "1423423",
+            "type": "receptionist",
+            "name": "Pam Beesly",
+            "username": "pamy",
+            "email": "pam.beesly@gmail.com",
+            "password": "1234",
+            "picture": "asdfasdfasd;fkjasd;",
+            "verified": true
+        },
+        {
+            "id": "6208904e-d748-4755-84ae-aa5155298700",
+            "name": "jorigin",
+            "username": "pereznator",
+            "type": "tourist",
+            "email": "asdasfdffdfdf",
+            "picture": "asdf",
+            "password": "1234",
+            "verified": false
+        },
+        {
+            "id": "e61214ac-30d2-45d7-9023-2de872eb291d",
+            "name": "Antonio Perez",
+            "username": "antoniolj07",
+            "type": "tourist",
+            "email": "antoniolj@gmail.com",
+            "picture": null,
+            "password": "123",
+            "verified": false
+        },
+        {
+            "id": "c5a440e5-ed05-4da9-b8a4-508d1b3438e3",
+            "name": "Tony Montana",
+            "username": "tonyM",
+            "type": "receptionist",
+            "email": "tony.montanta@gmail.com",
+            "picture": "asdfasdf",
+            "password": "!Contra123",
+            "verified": false
+        },
+        {
+            "id": "428ba80a-40f1-4108-b0ef-e076df379d15",
+            "name": "Ryan Howard",
+            "username": "RyanH",
+            "type": "tourist",
+            "email": "ryan.howrad@gmail.com",
+            "picture": null,
+            "password": "1234",
+            "verified": true
+        }
+    ]
 }

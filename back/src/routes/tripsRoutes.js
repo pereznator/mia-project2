@@ -4,35 +4,29 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/',
-  [
+router.get('/', [
     validateUser,
     getAllTrips
-  ]
-);
-router.post('/',
-  [
+]);
+router.post('/', [
     validateUser,
     createTrip
-  ]
-);
-router.get('/reserves',
-  [
+]);
+router.get('/reserves', [
     validateUser,
     getUserTrips
-  ]
-);
-router.post('/reserves/:tripId',
-  [
+]);
+router.get('/reserves/all', [
+    validateUser,
+    getUserTrips
+]);
+router.post('/reserves/:tripId', [
     validateUser,
     reserveTrip
-  ]
-);
-router.delete('/:tripId',
-  [
+]);
+router.delete('/:tripId', [
     validateUser,
     removeTrip
-  ]
-);
+]);
 
 module.exports = router;

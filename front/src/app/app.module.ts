@@ -19,6 +19,8 @@ import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmActionComponent } from './modals/confirm-action/confirm-action.component';
 import { ToastComponent } from './shared/toast/toast.component';
 import { RequestsComponent } from './pages/requests/requests.component';
+import { TripRequestsComponent } from './pages/trip-requests/trip-requests.component';
+import { CarRequestsComponent } from './pages/car-requests/car-requests.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { RequestsComponent } from './pages/requests/requests.component';
     NavbarComponent,
     ConfirmActionComponent,
     RequestsComponent,
+    TripRequestsComponent,
+    CarRequestsComponent,
   ],
   imports: [
     BrowserModule,
