@@ -1,4 +1,5 @@
 const { uuid } = require("uuidv4");
+const cognitoService = require("./cognitoService");
 const dataService = require("./dataService");
 
 class AuthService {
@@ -32,9 +33,18 @@ class AuthService {
     if (userName) {
       return [null, "Username ya esta registrado."];
     }
+
+    const data = await cognitoService.signUpUser(newUser.username, newUser.email, newUser.password);
+
+    if (!data.username) {
+      return [null, "No se pudo crear el usuario (cognito)."];
+    }
+
     users.push(newUser);
-    await dataService.saveUsers(users);
+    dataService.saveUsers(users);
+
     return [newUser, null];
+    
   }
 
   async login(body) {
@@ -45,20 +55,28 @@ class AuthService {
     if (!users) {
       return [null, "No se encontraron usuarios"];
     }
-    let foundUser = users.find(user => user.email === body.email);
-    if (!foundUser) {
-      foundUser = users.find(user => user.username === body.email);
-      if (!foundUser) {
+    let foundUserIdx = users.findIndex(user => user.email === body.email);
+    if (foundUserIdx == -1) {
+      foundUserIdx = users.findIndex(user => user.username === body.email);
+      if (foundUserIdx == -1) {
         return [null, "Usuario o contraseña incorrecta."];
       }
     }
-    if (foundUser.password !== body.password) {
+    if (users[foundUserIdx].password !== body.password) {
       return [null, "Usuario o contraseña incorrecta."];
     }
-    if (!foundUser.verified) {
-      return [null, "Usuario no verificado."];
+
+    const data = await cognitoService.loginUser(users[foundUserIdx].username, users[foundUserIdx].password);
+    if (!data.idToken) {
+      return [null, "No se puede iniciar sesion (cognito)."];
     }
-    return [foundUser, null];
+
+    if (!users[foundUserIdx].verified) {
+      users[foundUserIdx].verified = true;
+      await dataService.saveUsers(users);
+    }
+
+    return [users[foundUserIdx], null];
   }
 
 }

@@ -102,6 +102,23 @@ const getAllUserTrips = async(req, res) => {
     }
 };
 
+const approveUserTrip = async(req, res) => {
+  try {
+    const { requestId } = req.params;
+    const [userTrips, error] = await tripsService.approveUserTrip(requestId);
+    if (error) {
+        errorMessage.error = error;
+        return res.status(errorMessage.status).send(errorMessage);
+    }
+    successMessage.data = userTrips;
+    return res.status(successMessage.status).send(successMessage);
+  } catch (err) {
+    console.log(err);
+    errorMessage = DEFAULT_ERROR_MESSAGE;
+    return res.status(errorMessage.status).send(errorMessage);
+  }
+};
+
 
 module.exports = {
     getAllTrips,
@@ -109,5 +126,6 @@ module.exports = {
     removeTrip,
     reserveTrip,
     getUserTrips,
-    getAllUserTrips
+    getAllUserTrips,
+    approveUserTrip
 };

@@ -28,5 +28,12 @@ export class CarsService {
   getCarRequests(): Observable<any> {
     return this.serverService.request("GET", "/cars/reserves");
   }
+  
+  getActiveCarRequests(): Observable<any> {
+    return this.serverService.request("GET", "/cars/reserves/all");
+  }
+  approveCarRequest(requestId: string): Observable<any> {
+    return this.serverService.request("POST", `/cars/reserves/approve/${requestId}`, {});
+  }
 
 }

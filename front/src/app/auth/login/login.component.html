@@ -7,7 +7,7 @@
         <label for="floatingInput">Correo Electronico / Usuario</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': notValidPassword}">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" (keyup.enter)="submitForm()" formControlName="password" [ngClass]="{'is-invalid': notValidPassword}">
         <label for="floatingPassword">Contraseña</label>
       </div>
       <div class="row mt-2">

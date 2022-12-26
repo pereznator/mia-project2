@@ -5,6 +5,7 @@ import { UsersService } from '../../services/users.service';
 import { take, map } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmActionComponent } from 'src/app/modals/confirm-action/confirm-action.component';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +17,13 @@ export class UsersComponent implements OnInit {
   users: any[];
   loading = false;
 
-  constructor(private location: Location, private router: Router, private usersService: UsersService, private modalService: NgbModal) { }
+  constructor(
+    private location: Location,
+    private router: Router,
+    private usersService: UsersService,
+    private modalService: NgbModal,
+    private toastService: ToastService
+  ) { }
 
   ngOnInit(): void { 
     this.getUsers();
@@ -28,6 +35,8 @@ export class UsersComponent implements OnInit {
       this.users = resp;
       this.loading = false;
     }, err => {
+      this.loading = false;
+      this.toastService.showError(err.error);
       console.log(err);
     });
   }
@@ -38,8 +47,10 @@ export class UsersComponent implements OnInit {
     modal.componentInstance.title = "Eliminar Usuario";
     modal.result.then( result => {
       this.usersService.removeUser(userId).pipe(take(1), map(resp => resp.data)).subscribe(resp => {
+        this.toastService.showSuccess("Usuario eliminado exitosamente.");
         this.getUsers();
       }, err => {
+        this.toastService.showError(err.error);
         console.log(err);
       });
     }, dismiss => {});

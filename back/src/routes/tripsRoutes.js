@@ -1,5 +1,5 @@
 const { validateUser } = require('../middlewares/authentication');
-const { getAllTrips, removeTrip, createTrip, reserveTrip, getUserTrips } = require('../controllers/tripsController');
+const { getAllTrips, removeTrip, createTrip, reserveTrip, getUserTrips, getAllUserTrips, approveUserTrip } = require('../controllers/tripsController');
 const express = require('express');
 
 const router = express.Router();
@@ -18,7 +18,11 @@ router.get('/reserves', [
 ]);
 router.get('/reserves/all', [
     validateUser,
-    getUserTrips
+    getAllUserTrips
+]);
+router.post('/reserves/approve/:requestId', [
+    validateUser,
+    approveUserTrip
 ]);
 router.post('/reserves/:tripId', [
     validateUser,

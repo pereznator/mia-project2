@@ -100,6 +100,46 @@ class CarsService {
     return [userCars, null];
   }
 
+  async getAllCarRequests() {
+    const allUserCars = await dataService.getUserCars();
+    if (!allUserCars) {
+      return [null, "No se encontraron carros del usuario"];
+    }
+    const activeRequests = allUserCars.filter(request => request.approved === false);
+    const allUsers = await dataService.getUsers();
+    const allCars = await dataService.getCars();
+
+    const data = activeRequests.map(request => {
+      const user = allUsers.find(user => user.id === request.user_id);
+      const car = allCars.find(car => car.liscence_plate === request.liscence_plate);
+      return {
+        ...car,
+        username: user ? user.username: null,
+        id: request.id
+      };
+    });
+    return [data, null];
+  }
+
+  async approveCarRequest(requestId) {
+    const allUserCars = await dataService.getUserCars();
+    if (!allUserCars) {
+      return [null, "No se encontraron carros del usuario"];
+    }
+    const foundRequestIndex = await allUserCars.findIndex(request => request.id === requestId);
+    if (foundRequestIndex === -1) {
+      return [null, "No se pudo encontrar la solicitud."];
+    }
+    if (allUserCars[foundRequestIndex].approved === true) {
+      return [null, "La solicitud ya ha sido aprobada"];
+    }
+
+    allUserCars[foundRequestIndex].approved = true;
+    await dataService.saveUserCars(allUserCars);
+    return [allUserCars[foundRequestIndex], null];
+
+  }
+
 }
 
 module.exports = new CarsService();

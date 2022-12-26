@@ -9,6 +9,8 @@ const touristRoutes = require("./routes/touristRoutes");
 const userRoutes = require("./routes/userRoutes");
 const tripRoutes = require("./routes/tripsRoutes");
 const carsRoutes = require("./routes/carsRoutes");
+const createAdminUser = require('./utils/createAdminUser');
+const resetData = require('./utils/resetData');
 
 const app = express();
 
@@ -25,5 +27,7 @@ app.use("/tourist", touristRoutes);
 app.use("/trips", tripRoutes);
 app.use("/cars", carsRoutes);
 
+//await resetData()
+//await createAdminUser();
 
 module.exports = app;

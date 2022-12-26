@@ -3,6 +3,7 @@ import { TripsService } from '../../services/trips.service';
 import { CarsService } from '../../services/cars.service';
 import { take, map } from 'rxjs';
 import { ToastService } from '../../services/toast.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-requests',
@@ -19,7 +20,8 @@ export class RequestsComponent implements OnInit {
   constructor(
     private tripsService: TripsService,
     private carsService: CarsService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -57,6 +59,10 @@ export class RequestsComponent implements OnInit {
       this.toastService.showError(err.error);
       console.log(err);
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

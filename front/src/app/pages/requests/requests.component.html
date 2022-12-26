@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-1">
       <div class="d-grid gap-2">
-        <button class="btn btn-secondary">Regresar</button>
+        <button class="btn btn-secondary" (click)="goBack()">Regresar</button>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
           <td>{{req.destination_city}}</td>
           <td>{{req.days}}</td>
           <td>{{req.price}}</td>
-          <td>{{req.approved ? "Aprovado" : "No Aprobado"}}</td>
+          <td>{{req.approved ? "Aprobado" : "No Aprobado"}}</td>
         </tr>
       </tbody>
     </table>
@@ -63,7 +63,7 @@
           <td>{{car.model}}</td>
           <td>{{car.price}}</td>
           <td>{{car.city}}</td>
-          <td>{{car.status ? "Aprobado" : "No Aprobado"}}</td>
+          <td>{{car.approved ? "Aprobado" : "No Aprobado"}}</td>
         </tr>
       </tbody>
     </table>

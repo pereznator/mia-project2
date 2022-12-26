@@ -1,5 +1,6 @@
 const { uuid } = require("uuidv4");
 const { USER_TYPES } = require("../utils/constants");
+const cognitoService = require("./cognitoService");
 const dataService = require("./dataService");
 
 class UserService {
@@ -33,8 +34,27 @@ class UserService {
     if (idx == -1) {
       return [null, "No se encontro el usuario"];
     }
+    const data = await cognitoService.removeUser(users[idx].username, users[idx].password);
+    if (data.error) {
+      return [null, "No se puede eliminar el usuario (cognito)."];
+    }
     users.splice(idx, 1);
     await dataService.saveUsers(users);
+
+    let userCars = await dataService.getUserCars();
+    if (!userCars) {
+      return [null, "No se encontraron los autos"];
+    }
+    userCars = userCars.filter(userCar => userCar.user_id !== userId);
+    await dataService.saveUserCars(userCars);
+
+    let userTrips = await dataService.getUserTrips();
+    if (!userTrips) {
+      return [null, "No se encontraron los viajes"];
+    }
+    userTrips = userTrips.filter(userTrip => userTrip.user_id !== userId);
+    await dataService.saveUserTrips(userTrips);
+
     return [idx, null];
   }
 
@@ -52,6 +72,8 @@ class UserService {
       password: userBody.password,
       verified: false
     };
+
+    
     const users = await dataService.getUsers();
     if (!users) {
       return [null, "No se encontraron usuarios"];
@@ -64,6 +86,12 @@ class UserService {
     if (userName) {
       return [null, "Username ya esta registrado."];
     }
+
+    const data = await cognitoService.signUpUser(newUser.username, newUser.email, newUser.password);
+    if (!data.username) {
+      return [null, "No se pudo crear el usuario (cognito)."];
+    }
+
     users.push(newUser);
     await dataService.saveUsers(users);
     return [newUser, null];

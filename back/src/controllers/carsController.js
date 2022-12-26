@@ -85,11 +85,46 @@ const getUserCars = async (req, res) => {
   }
 };
 
+const getAllActiveRequests = async (req, res) => {
+  try {
+    const [cars, error] = await carsService.getAllCarRequests();
+    if (error) {
+      errorMessage.error = error;
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+    successMessage.data = cars;
+    return res.status(successMessage.status).send(successMessage);
+  } catch (err) {
+    console.log(err);
+    errorMessage = DEFAULT_ERROR_MESSAGE;
+    return res.status(errorMessage.status).send(errorMessage);
+  }
+};
+
+const approveUserCarRequest = async (req, res) => {
+  try {
+    const { requestId } = req.params;
+    const [cars, error] = await carsService.approveCarRequest(requestId);
+    if (error) {
+      errorMessage.error = error;
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+    successMessage.data = cars;
+    return res.status(successMessage.status).send(successMessage);
+  } catch (err) {
+    console.log(err);
+    errorMessage = DEFAULT_ERROR_MESSAGE;
+    return res.status(errorMessage.status).send(errorMessage);
+  }
+};
+
 
 module.exports = {
   getAllCars,
   createCar,
   removeCar,
   getUserCars,
-  reserveCar
+  reserveCar,
+  getAllActiveRequests,
+  approveUserCarRequest
 };

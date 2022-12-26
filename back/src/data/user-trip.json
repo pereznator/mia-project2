@@ -1,22 +1,3 @@
 {
-  "userTrip": [
-    {
-      "id": "1234324",
-      "user_id": "123refds",
-      "trip_id": "34rfds",
-      "approved": false
-    },
-    {
-      "id": "8264bc8d-f48b-489b-b93b-bed6ef6ffb56",
-      "user_id": "428ba80a-40f1-4108-b0ef-e076df379d15",
-      "trip_id": "4a617299-ddf6-4ecd-8ea0-6ece5806e3ef",
-      "approved": false
-    },
-    {
-      "id": "74580692-dc74-4a2d-be7c-2d4211729067",
-      "user_id": "428ba80a-40f1-4108-b0ef-e076df379d15",
-      "trip_id": "47080eb6-c788-4e08-b019-e462f95a86a6",
-      "approved": false
-    }
-  ]
+  "userTrip": []
 }

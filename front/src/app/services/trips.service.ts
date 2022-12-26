@@ -28,4 +28,12 @@ export class TripsService {
     return this.serverService.request("GET", "/trips/reserves");
   }
 
+  getAllActiveReqeusts(): Observable<any> {
+    return this.serverService.request("GET", "/trips/reserves/all");
+  }
+
+  approveTripRequest(requestId: string): Observable<any> {
+    return this.serverService.request("POST", `/trips/reserves/approve/${requestId}`, {});
+  }
+
 }

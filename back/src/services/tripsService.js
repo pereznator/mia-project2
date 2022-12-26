@@ -80,42 +80,77 @@ class TripsService {
     }
 
     async getUserTrips(userId) {
-        const allUserTrips = await dataService.getUserTrips();
-        if (!allUserTrips) {
-            return [null, "No se encontraron solicitudes de viajes."];
-        }
-        const userReserves = allUserTrips.filter(userTrip => userTrip.user_id === userId);
-        if (!userReserves) {
-            return [null, "Error al buscar tus solicitudes."];
-        }
-        if (userReserves.length === 0) {
-            return [
-                [], null
-            ];
-        }
-        const allTrips = await dataService.getTrips();
-        if (!allTrips) {
-            return [null, "No se pudieron encontrar viajes"];
-        }
-        let userTrips = allTrips.filter(trip => userReserves.map(userTrip => userTrip.trip_id).includes(trip.id));
-        userTrips = userTrips.map(userTrip => {
-            const userRequest = userReserves.find(reserve => reserve.trip_id === userTrip.id);
-            return {
-                ...userTrip,
-                approved: userRequest.approved,
-                id: userRequest.id
-            }
-        });
+      const allUserTrips = await dataService.getUserTrips();
+      if (!allUserTrips) {
+          return [null, "No se encontraron solicitudes de viajes."];
+      }
+      const userReserves = allUserTrips.filter(userTrip => userTrip.user_id === userId);
+      if (!userReserves) {
+          return [null, "Error al buscar tus solicitudes."];
+      }
+      if (userReserves.length === 0) {
+          return [
+              [], null
+          ];
+      }
+      const allTrips = await dataService.getTrips();
+      if (!allTrips) {
+          return [null, "No se pudieron encontrar viajes"];
+      }
+      let userTrips = allTrips.filter(trip => userReserves.map(userTrip => userTrip.trip_id).includes(trip.id));
+      userTrips = userTrips.map(userTrip => {
+          const userRequest = userReserves.find(reserve => reserve.trip_id === userTrip.id);
+          return {
+              ...userTrip,
+              approved: userRequest.approved,
+              id: userRequest.id
+          }
+      });
 
-        if (!userTrips) {
-            return [null, "Error al buscar tus solicitudes."];
-        }
-        return [userTrips, null];
+      if (!userTrips) {
+          return [null, "Error al buscar tus solicitudes."];
+      }
+      return [userTrips, null];
     }
 
     async getAllUserTrips() {
+      const allUserTrips = await dataService.getUserTrips();
+      if (!allUserTrips) {
+        return [null, "No se encontraron solicitudes de viajes."];
+      }
+      const activeRequests = allUserTrips.filter(request => request.approved === false);
+      const allUsers = await dataService.getUsers();
+      const allTrips = await dataService.getTrips();
 
+      const data = activeRequests.map(request => {
+        const user = allUsers.find(user => user.id === request.user_id);
+        const trip = allTrips.find(trip => trip.id === request.trip_id);
+        return {
+          ...trip,
+          username: user ? user.username: null,
+          id: request.id
+        };
+      });
+      return [data, null];
     }
+
+  async approveUserTrip(requestId) {
+    const allUserTrips = await dataService.getUserTrips();
+    if (!allUserTrips) {
+      return [null, "No se encontraron carros del usuario"];
+    }
+    const foundRequestIndex = await allUserTrips.findIndex(request => request.id === requestId);
+    if (foundRequestIndex === -1) {
+      return [null, "No se pudo encontrar la solicitud."];
+    }
+    if (allUserTrips[foundRequestIndex].approved === true) {
+      return [null, "La solicitud ya ha sido aprobada"];
+    }
+
+    allUserTrips[foundRequestIndex].approved = true;
+    await dataService.saveUserTrips(allUserTrips);
+    return [allUserTrips[foundRequestIndex], null];
+  }
 
 }
 

@@ -16,15 +16,17 @@ export class HomeComponent implements OnInit {
   USER_TYPES = USER_TYPES;
 
   constructor(private usersService: UsersService, private router: Router) {
+  }
+
+  ngOnInit(): void {
     this.usersService.getCurrentUser().pipe(take(1), map(resp => resp.data)).subscribe(resp => {
       this.loading = false;
       this.user = resp;
     }, err => {
+      this.loading = false;
       console.log(err);
     });
   }
-
-  ngOnInit(): void {}
 
   navigateTo(route: string): void {
     this.router.navigate([route]);

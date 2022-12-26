@@ -1,1 +1,41 @@
-<p>trip-requests works!</p>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-11">
+      <h1>Solicitudes de Viajes</h1>
+    </div>
+    <div class="col-md-1">
+      <div class="d-grid gap-2">
+        <button class="btn btn-secondary" (click)="goBack()">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th class="colum-tab">Agencia</th>
+        <th>Ciudad Origen</th>
+        <th>Ciudad Destino</th>
+        <th>Dias de Vuelo</th>
+        <th>Precio</th>
+        <th>Usuario</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="!loading">
+      <tr *ngFor="let trip of trips">
+        <td class="colum-tab">{{trip.agency}}</td>
+        <td>{{trip.origin_city}}</td>
+        <td>{{trip.destination_city}}</td>
+        <td>{{trip.days}}</td>
+        <td>{{trip.price}}</td>
+        <td>{{trip.username}}</td>
+        <td>
+          <button class="btn btn-outline-success" (click)="approveTrip(trip.id)">
+            Aprobar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
