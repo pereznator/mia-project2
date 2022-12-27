@@ -1,5 +1,6 @@
 const { uuid } = require("uuidv4");
 const { USER_TYPES } = require("../utils/constants");
+const bucketService = require("./bucketService");
 const cognitoService = require("./cognitoService");
 const dataService = require("./dataService");
 
@@ -90,6 +91,14 @@ class UserService {
     const data = await cognitoService.signUpUser(newUser.username, newUser.email, newUser.password);
     if (!data.username) {
       return [null, "No se pudo crear el usuario (cognito)."];
+    }
+
+    if (body.picture) {
+      const bucketData = await bucketService.uploadPicture(body.picture, body.username);
+      if (bucketData.error) {
+        return [null, "No se pudo almacenar la imagen"];
+      }
+      newUser.picture = bucketData.message.Location;
     }
 
     users.push(newUser);

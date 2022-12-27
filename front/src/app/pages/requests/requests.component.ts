@@ -14,8 +14,8 @@ export class RequestsComponent implements OnInit {
 
   showingNow = "trips"
   loading = false;
-  requests: any[];
-  carRequests: any[];
+  requests: any[] = [];
+  carRequests: any[] = [];
 
   constructor(
     private tripsService: TripsService,

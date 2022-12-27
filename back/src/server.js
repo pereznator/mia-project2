@@ -11,13 +11,14 @@ const tripRoutes = require("./routes/tripsRoutes");
 const carsRoutes = require("./routes/carsRoutes");
 const createAdminUser = require('./utils/createAdminUser');
 const resetData = require('./utils/resetData');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(cors());
 app.use(morgan("tiny"));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ limit: '200mb', extended: true }));
+app.use(bodyParser.json({limit: '50mb', extended: true}));
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
@@ -27,7 +28,7 @@ app.use("/tourist", touristRoutes);
 app.use("/trips", tripRoutes);
 app.use("/cars", carsRoutes);
 
-//await resetData()
-//await createAdminUser();
+//resetData()
+//createAdminUser();
 
 module.exports = app;

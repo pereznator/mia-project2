@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -48,12 +48,10 @@ export class AuthService {
     const requestUrl = `http://localhost:3000/auth/register`;
     let headerData = {};
     let headers = new HttpHeaders(headerData);
-    let params = {};
 
     let returnObservable: Observable<any> = null;
     returnObservable = this.http.post(requestUrl, body, {
       headers,
-      params
     });
 
     return returnObservable;

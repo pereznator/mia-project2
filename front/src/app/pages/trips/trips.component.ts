@@ -16,7 +16,7 @@ import { USER_TYPES } from '../../utils/constants';
 })
 export class TripsComponent implements OnInit {
 
-  trips: any[];
+  trips: any[] = [];
   loading = false;
   USER_TYPES = USER_TYPES;
   search: string = null;

@@ -51,4 +51,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="alert alert-warning" *ngIf="!loading && cars.length === 0">
+    <p>No se encontraron autos</p>
+  </div>
 </div>

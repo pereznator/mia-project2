@@ -38,4 +38,7 @@
       </tr>
     </tbody>
   </table>
+  <div class="alert alert-warning" *ngIf="!loading && trips.length === 0">
+    <p>No se encontraron reservaciones de viajes.</p>
+  </div>
 </div>

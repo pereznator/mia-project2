@@ -1,30 +1,39 @@
 {
   "trips": [
     {
-      "id": "1232",
-      "agency": "The Office",
-      "origin_city": "New York",
-      "destination_city": "San Francisco",
-      "days": "2022/12/20 - 2022/12/25",
-      "price": 500,
-      "picture": "fhsdafasdf"
-    },
-    {
-      "id": "47080eb6-c788-4e08-b019-e462f95a86a6",
+      "id": "b2ca332d-b813-49fb-9366-9b55d47f5419",
       "agency": "La agencia",
       "origin_city": "Guatemala",
-      "destination_city": "Los Angeles",
-      "days": "2022/12/25 - 2022/12/31",
-      "price": "699",
-      "picture": "ASDFASDFASDFASDF"
-    },
-    {
-      "id": "4a617299-ddf6-4ecd-8ea0-6ece5806e3ef",
-      "agency": "G Trips",
-      "origin_city": "Qatar",
-      "destination_city": "Ankara",
+      "destination_city": "New York",
       "days": "2022/12/25 - 2022/12/31",
       "price": "1500",
+      "picture": null
+    },
+    {
+      "id": "360576c9-51b6-468c-a03e-2ace32e82b14",
+      "agency": "The Office",
+      "origin_city": "Guatemala",
+      "destination_city": "Ankara",
+      "days": "2022/12/25 - 2023/01/05",
+      "price": "2500",
+      "picture": null
+    },
+    {
+      "id": "f27f4e90-6ddf-4c51-a03b-68db855cad76",
+      "agency": "La agencia",
+      "origin_city": "Estambul",
+      "destination_city": "Quito",
+      "days": "2022/01/25 - 2023/01/29",
+      "price": "699",
+      "picture": null
+    },
+    {
+      "id": "2665935d-da7a-44c6-9cf4-306fc5e98e1b",
+      "agency": "TripsGO",
+      "origin_city": "Ciudad de Mexico",
+      "destination_city": "Paris",
+      "days": "2022/12/25 - 2023/01/05",
+      "price": "1499",
       "picture": null
     }
   ]

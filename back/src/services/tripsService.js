@@ -55,6 +55,14 @@ class TripsService {
         }
         trips.splice(tripIndex, 1);
         await dataService.saveTrips(trips);
+
+        let allUserTrips = await dataService.getUserTrips();
+        if (!allUserTrips) {
+            return [null, "No se encontraron solicitudes de viajes."];
+        }
+        allUserTrips = allUserTrips.filter(userTrips => userTrips.trip_id !== tripId);
+        await dataService.saveUserTrips(allUserTrips);
+
         return [tripIndex, null];
     }
 

@@ -1,28 +1,36 @@
 {
   "cars": [
     {
-      "liscence_plate": "ABC123",
-      "agency": "agency name",
-      "brand": "Toyota",
-      "model": "Corolla",
-      "price": 250,
-      "city": "London"
-    },
-    {
       "liscence_plate": "RTX4200",
-      "agency": "AgencyX1",
-      "brand": "Mitsubishi",
-      "model": "Lancer",
-      "price": "60",
+      "agency": "Cars 2",
+      "brand": "Mazda",
+      "model": "cx5",
+      "price": "199",
       "city": "New York"
     },
     {
       "liscence_plate": "3DF3DF",
-      "agency": "agencia21",
-      "brand": "Mercedes",
-      "model": "g500",
+      "agency": "Carro loco",
+      "brand": "Audi",
+      "model": "a4",
       "price": "699",
-      "city": "Dubai"
+      "city": "Qatar"
+    },
+    {
+      "liscence_plate": "CTR345",
+      "agency": "G Trips",
+      "brand": "Tesla",
+      "model": "Model X",
+      "price": "899",
+      "city": "Detroit"
+    },
+    {
+      "liscence_plate": "FUS256",
+      "agency": "AgencyX1",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "price": "59",
+      "city": "Cleveland"
     }
   ]
 }

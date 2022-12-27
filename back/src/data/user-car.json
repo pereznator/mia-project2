@@ -1,3 +1,10 @@
 {
-  "userCar": []
+  "userCar": [
+    {
+      "id": "2c74786f-4af9-48c1-8e1a-1532a78b22db",
+      "liscence_plate": "3DF3DF",
+      "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
+      "approved": false
+    }
+  ]
 }

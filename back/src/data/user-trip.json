@@ -1,3 +1,10 @@
 {
-  "userTrip": []
+  "userTrip": [
+    {
+      "id": "587ade72-1f45-4ba3-95f1-666b534c9b8a",
+      "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
+      "trip_id": "360576c9-51b6-468c-a03e-2ace32e82b14",
+      "approved": false
+    }
+  ]
 }

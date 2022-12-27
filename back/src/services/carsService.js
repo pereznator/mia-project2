@@ -51,6 +51,14 @@ class CarsService {
     }
     cars.splice(carIndex, 1);
     await dataService.saveCars(cars);
+
+    let allUserCars = await dataService.getUserCars();
+    if (!allUserCars) {
+      return [null, "No se encontraron solicitudes de autos."];
+    }
+    allUserCars = allUserCars.filter(userCars => userCars.liscence_plate !== liscencePlate);
+    await dataService.saveUserCars(allUserCars);
+
     return [carIndex, null];
   }
 

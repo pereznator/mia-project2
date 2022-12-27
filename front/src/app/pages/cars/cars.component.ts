@@ -16,7 +16,7 @@ import { USER_TYPES } from '../../utils/constants';
 })
 export class CarsComponent implements OnInit {
 
-  cars: any[];
+  cars: any[] = [];
   loading = false;
   USER_TYPES = USER_TYPES;
   search: string = null;

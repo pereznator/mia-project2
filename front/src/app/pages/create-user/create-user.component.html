@@ -41,8 +41,10 @@
     </div>
     <div class="row mt-2">
       <div class="col-md">
-        <label for="picture" class="form-label">Foto de Perfil</label>
-        <input type="text" class="form-control" id="picture" placeholder="picture" formControlName="picture">
+        
+        <label class="form-label" for="picture">Imagen</label>
+          <input type="file" class="form-control" id="picture" accept="image/*" (change)="processFile($event)" formControlName="picture">
+        
       </div>
       <div class="col-md">
         <label for="password" class="form-label">Contraseña</label>

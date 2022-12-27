@@ -30,6 +30,8 @@ export class CreateUserComponent implements OnInit {
     { label: "Administrador", value: USER_TYPES.ADMIN },
   ];
 
+  imgSrc: string = null;
+
   error = false;
   errorMessage = "Sucedio un error.";
 
@@ -56,6 +58,33 @@ export class CreateUserComponent implements OnInit {
     return this.userForm.get("repeatPassword").invalid && (this.userForm.get("repeatPassword").touched || (this.userForm.get("repeatPassword").value !== this.userForm.get("password").value));
   }
 
+  processFile(imageInput: any): void {
+    if (!imageInput) {
+      this.userForm.controls["picture"].setValue(null);
+      return;
+    }
+    if (imageInput.target.files.length === 0) {
+      this.userForm.controls["picture"].setValue(null);
+      return;
+    }
+    const picFile = imageInput.target.files[0];
+    const pattern = /image-*/;
+
+    if (!picFile.type.match(pattern)) {
+      this.userForm.controls["picture"].setValue(null);
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = this.handleReaderLoaded.bind(this);
+    reader.readAsDataURL(picFile);
+  }
+
+  handleReaderLoaded(e: any) {
+    const reader = e.target;
+    this.imgSrc = reader.result;
+    //console.log(this.imageSrc.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, ''));
+  }
+
   createUser(): void {
     this.error = false;
     if (this.userForm.invalid) {
@@ -71,7 +100,7 @@ export class CreateUserComponent implements OnInit {
       username: this.userForm.get("username").value,
       email: this.userForm.get("email").value,
       type: this.userForm.get("type").value,
-      picture: this.userForm.get("picture").value,
+      picture: this.userForm.get("picture").value && this.imgSrc ? this.imgSrc : null,
       password: this.userForm.get("password").value,
     }).pipe(take(1), map(resp => resp.data)).subscribe(resp => {
       this.toastService.showSuccess("Usuario creado correctamente!");

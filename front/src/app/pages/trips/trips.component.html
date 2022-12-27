@@ -36,17 +36,22 @@
       </tr>
     </thead>
     <tbody *ngIf="!loading">
-      <tr *ngFor="let trip of trips">
-        <td class="colum-tab">{{trip.agency}}</td>
-        <td>{{trip.origin_city}}</td>
-        <td>{{trip.destination_city}}</td>
-        <td>{{trip.days}}</td>
-        <td>{{trip.price}}</td>
-        <td>
-          <button class="btn btn-outline-danger" *ngIf="authService.type === USER_TYPES.ADMIN" (click)="removeTrip(trip.id)">Eliminar</button>
-          <button class="btn btn-outline-success" *ngIf="authService.type === USER_TYPES.TOURIST" (click)="requestTrip(trip.id)">Reservar</button>
-        </td>
-      </tr>
+      <ng-container *ngIf="trips.length > 0">
+        <tr *ngFor="let trip of trips">
+          <td class="colum-tab">{{trip.agency}}</td>
+          <td>{{trip.origin_city}}</td>
+          <td>{{trip.destination_city}}</td>
+          <td>{{trip.days}}</td>
+          <td>{{trip.price}}</td>
+          <td>
+            <button class="btn btn-outline-danger" *ngIf="authService.type === USER_TYPES.ADMIN" (click)="removeTrip(trip.id)">Eliminar</button>
+            <button class="btn btn-outline-success" *ngIf="authService.type === USER_TYPES.TOURIST" (click)="requestTrip(trip.id)">Reservar</button>
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
+  <div class="alert alert-warning" *ngIf="!loading && trips.length == 0">
+    <p>No se encontraron viajes</p>
+  </div>
 </div>

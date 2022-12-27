@@ -24,10 +24,14 @@
           </div>
         </div>
         <div class="col-md">
-          <div class="form-floating mb-3">
+          <div class="input-group mb-3">
+            <input type="file" class="form-control" id="picture" accept="image/*" (change)="processFile($event)" formControlName="picture">
+            <label class="input-group-text" for="picture">Imagen</label>
+          </div>
+          <!--div class="form-floating mb-3">
             <input type="text" class="form-control" id="pictureInput" placeholder="name@example.com" formControlName="picture" [ngClass]="{'is-invalid': notValidPicture}">
             <label for="pictureInput">Foto de Perfil</label>
-          </div>
+          </div-->
         </div>
       </div>
       <div class="row">

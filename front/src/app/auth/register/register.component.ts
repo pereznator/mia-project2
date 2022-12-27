@@ -20,8 +20,11 @@ export class RegisterComponent implements OnInit {
     repeatPassword: [null, [Validators.required]],
   });
 
+  picFile: File = null;
+
   error = false;
   errorMessage = "Sucedio un error.";
+  imageSrc: string = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -47,6 +50,37 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  processFile(imageInput: any): void {
+    if (!imageInput) {
+      this.picFile = null;
+      this.registerForm.controls["picture"].setValue(null);
+      return;
+    }
+    if (imageInput.target.files.length === 0) {
+      this.picFile = null;
+      this.registerForm.controls["picture"].setValue(null);
+      return;
+    }
+    this.picFile = imageInput.target.files[0];
+    const pattern = /image-*/;
+
+    if (!this.picFile.type.match(pattern)) {
+      this.picFile = null;
+      this.registerForm.controls["picture"].setValue(null);
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = this.handleReaderLoaded.bind(this);
+    reader.readAsDataURL(this.picFile);
+  }
+
+  handleReaderLoaded(e: any) {
+    const reader = e.target;
+    this.imageSrc = reader.result;
+    //console.log(this.imageSrc.replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, ''));
+  }
+
+
   submitForm(): void {
     this.error = false;
     if (this.registerForm.invalid) {
@@ -57,11 +91,11 @@ export class RegisterComponent implements OnInit {
       this.errorMessage = "La contraseña no coincide.";
       return;
     }
-    
+
     this.authService.register({
       name: this.registerForm.get("name").value,
       username: this.registerForm.get("username").value,
-      picture: this.registerForm.get("picture").value,
+      picture: this.registerForm.get("picture").value && this.imageSrc ? this.imageSrc : null,
       email: this.registerForm.get("email").value,
       password: this.registerForm.get("password").value,
     }).pipe(take(1), map(resp => resp.data)).subscribe(resp => {

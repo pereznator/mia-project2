@@ -40,6 +40,9 @@
         </tr>
       </tbody>
     </table>
+    <div class="alert alert-warning" *ngIf="!loading && requests.length === 0">
+      <p>No se encontraron reservaciones de viajes.</p>
+    </div>
   </ng-container>
 
   <ng-container *ngIf="showingNow === 'cars'">
@@ -67,5 +70,8 @@
         </tr>
       </tbody>
     </table>
+    <div class="alert alert-warning" *ngIf="!loading && carRequests.length === 0">
+      <p>No se encontraron reservaciones de autos.</p>
+    </div>
   </ng-container>
 </div>
