@@ -1,6 +1,6 @@
 const { validateUser } = require('../middlewares/authentication');
 const express = require('express');
-const { getAllCars, createCar, removeCar, reserveCar, getUserCars, getAllActiveRequests, approveUserCarRequest } = require('../controllers/carsController');
+const { getAllCars, createCar, removeCar, reserveCar, getUserCars, getAllActiveRequests, updateCarRequest } = require('../controllers/carsController');
 
 const router = express.Router();
 
@@ -33,7 +33,7 @@ router.get("/reserves/all",
 router.post("/reserves/approve/:requestId",
   [
     validateUser,
-    approveUserCarRequest
+    updateCarRequest
   ]
 );
 router.post("/reserves/:liscencePlate",

@@ -1,10 +1,32 @@
 {
   "userCar": [
     {
-      "id": "2c74786f-4af9-48c1-8e1a-1532a78b22db",
-      "liscence_plate": "3DF3DF",
+      "id": "c78648a6-9a80-4152-8455-e6ca43461970",
+      "liscence_plate": "AMD129",
       "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
-      "approved": false
+      "pending": false,
+      "status": "aprobado"
+    },
+    {
+      "id": "6ffb5c3c-15fb-40c2-9437-31a8a6c94b08",
+      "liscence_plate": "RTX4200",
+      "user_id": "440d564d-acc1-4084-9c9f-9a76e1579cf2",
+      "pending": false,
+      "status": "aprobado"
+    },
+    {
+      "id": "95d0781c-ab82-4c2b-b490-f22f35fcd107",
+      "liscence_plate": "CTR345",
+      "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
+      "pending": false,
+      "status": "rechazado"
+    },
+    {
+      "id": "f9067ff6-d5c7-42b6-bdcb-8636bb8f1dce",
+      "liscence_plate": "CTR345",
+      "user_id": "440d564d-acc1-4084-9c9f-9a76e1579cf2",
+      "pending": false,
+      "status": "rechazado"
     }
   ]
 }

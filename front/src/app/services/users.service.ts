@@ -25,5 +25,8 @@ export class UsersService {
   removeUser(userId: string): Observable<any> {
     return this.serverService.request("DELETE", `/users/${userId}`, {userId});
   }
+  updateUser(userId: string, body: any): Observable<any> {
+    return this.serverService.request("POST", `/users/${userId}`, body);
+  }
 
 }

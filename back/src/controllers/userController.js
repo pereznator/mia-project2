@@ -66,11 +66,28 @@ const removeUser = async (req, res) => {
     return res.status(errorMessage.status).send(errorMessage);
   }
 };
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [foundUsers, error] = await userService.updateUser(id, req.body);
+    if (error) {
+      errorMessage.error = error;
+      return res.status(errorMessage.status).send(errorMessage);
+    }
+    successMessage.data = foundUsers;
+    return res.status(successMessage.status).send(successMessage);
+  } catch (err) {
+    console.log(err);
+    errorMessage = DEFAULT_ERROR_MESSAGE;
+    return res.status(errorMessage.status).send(errorMessage);
+  }
+};
 
 
 module.exports = {
   getUser,
   getAllUsers,
   removeUser,
-  createUser
+  createUser,
+  updateUser
 };

@@ -69,7 +69,7 @@ class UserService {
       username: userBody.username,
       type: userBody.type ? userBody.type : USER_TYPES.TOURIST,
       email: userBody.email,
-      picture: userBody.picture ? userBody.picture : null,
+      picture: null,
       password: userBody.password,
       verified: false
     };
@@ -93,8 +93,8 @@ class UserService {
       return [null, "No se pudo crear el usuario (cognito)."];
     }
 
-    if (body.picture) {
-      const bucketData = await bucketService.uploadPicture(body.picture, body.username);
+    if (userBody.picture) {
+      const bucketData = await bucketService.uploadPicture(userBody.picture, userBody.username);
       if (bucketData.error) {
         return [null, "No se pudo almacenar la imagen"];
       }
@@ -104,6 +104,28 @@ class UserService {
     users.push(newUser);
     await dataService.saveUsers(users);
     return [newUser, null];
+  }
+
+  async updateUser(userId, userBody) {
+    const { newName, newPic } = userBody;
+    const users = await dataService.getUsers();
+    if (!users) {
+      return [null, "No se pudo encontrar a los usuarios"];
+    }
+    const foundUserIdx = users.findIndex(user => user.id === userId);
+    if (foundUserIdx === -1) {
+      return [null, "No se encontró el usuario"];
+    }
+    users[foundUserIdx].name = newName;
+    if (newPic) {
+      const bucketData = await bucketService.uploadPicture(newPic, users[foundUserIdx].username);
+      if (bucketData.error) {
+        return [null, "No se pudo almacenar la imagen"];
+      }
+      users[foundUserIdx].picture = bucketData.message.Location;
+    }
+    await dataService.saveUsers(users);
+    return [users[foundUserIdx], null];
   }
 
 }

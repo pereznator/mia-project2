@@ -31,8 +31,11 @@
         <td>{{trip.price}}</td>
         <td>{{trip.username}}</td>
         <td>
-          <button class="btn btn-outline-success" (click)="approveTrip(trip.id)">
+          <button class="btn btn-outline-success" (click)="approveTrip(trip.id, true)" style="margin-right: 10px;">
             Aprobar
+          </button>
+          <button class="btn btn-outline-danger" (click)="approveTrip(trip.id, false)">
+            Rechazar
           </button>
         </td>
       </tr>

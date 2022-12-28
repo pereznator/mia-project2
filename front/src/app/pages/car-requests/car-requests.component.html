@@ -33,8 +33,11 @@
         <td>{{car.city}}</td>
         <td>{{car.username}}</td>
         <td>
-          <button class="btn btn-outline-success" (click)="approveRequest(car.id)">
+          <button class="btn btn-outline-success" (click)="updateRequest(car.id, true)" style="margin-right: 10px;">
             Aprobar
+          </button>
+          <button class="btn btn-outline-danger" (click)="updateRequest(car.id, false)">
+            Rechazar
           </button>
         </td>
       </tr>

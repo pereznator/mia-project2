@@ -15,6 +15,7 @@ import { HomeComponent } from './shared/home/home.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import { TripRequestsComponent } from './pages/trip-requests/trip-requests.component';
 import { CarRequestsComponent } from './pages/car-requests/car-requests.component';
+import { ProfileComponent } from './shared/profile/profile.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: "requests", component: RequestsComponent, data: { requiredType: USER_TYPES.ADMIN }, canActivate: [AuthGuard] },
   { path: "trip-requests", component: TripRequestsComponent, data: { requiredType: USER_TYPES.ADMIN }, canActivate: [AuthGuard] },
   { path: "car-requests", component: CarRequestsComponent, data: { requiredType: USER_TYPES.ADMIN }, canActivate: [AuthGuard] },
+  { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "**", redirectTo: "login" }
 ];
 

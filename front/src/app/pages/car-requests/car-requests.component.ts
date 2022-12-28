@@ -39,13 +39,13 @@ export class CarRequestsComponent implements OnInit {
     });
   }
 
-  approveRequest(requestId: any): void {
+  updateRequest(requestId: any, isApproved: boolean): void {
     const modal = this.modalService.open(ConfirmActionComponent);
-    modal.componentInstance.i = "Estas seguro que quiers aprobar la solicitud?";
-    modal.componentInstance.title = "Aprobar solicitud";
+    modal.componentInstance.i = `Estas seguro que quiers ${isApproved ? "aprobar" : "rechazar"} la solicitud?`;
+    modal.componentInstance.title = `${isApproved ? "Aprobar" : "Rechazar"} solicitud`;
     modal.result.then(result => {
-      this.carsService.approveCarRequest(requestId).pipe(take(1), map(resp => resp.data)).subscribe(resp => {
-        this.toastService.showSuccess("Solicitud aceptada.");
+      this.carsService.updateCarRequest(requestId, { isApproved }).pipe(take(1), map(resp => resp.data)).subscribe(resp => {
+        this.toastService.showSuccess("Solicitud actualizada.");
         this.getCarRequests();
       }, err => {
         console.log(err);

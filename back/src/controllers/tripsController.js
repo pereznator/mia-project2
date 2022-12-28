@@ -105,7 +105,8 @@ const getAllUserTrips = async(req, res) => {
 const approveUserTrip = async(req, res) => {
   try {
     const { requestId } = req.params;
-    const [userTrips, error] = await tripsService.approveUserTrip(requestId);
+    const { isApproved } = req.body;
+    const [userTrips, error] = await tripsService.updateRequest(requestId, isApproved);
     if (error) {
         errorMessage.error = error;
         return res.status(errorMessage.status).send(errorMessage);

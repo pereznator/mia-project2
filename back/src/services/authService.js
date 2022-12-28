@@ -50,9 +50,8 @@ class AuthService {
       newUser.picture = bucketData.message.Location;
     }
 
-
     users.push(newUser);
-    dataService.saveUsers(users);
+    await dataService.saveUsers(users);
 
     return [newUser, null];
     

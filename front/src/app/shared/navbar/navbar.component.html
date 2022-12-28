@@ -13,6 +13,7 @@
                 <a class="nav-link" *ngIf="authService.user.userType === USER_TYPES.TOURIST" routerLink="requests" routerLinkActive="active">Solicitudes</a>
                 <a class="nav-link" *ngIf="authService.user.userType === USER_TYPES.RECEPTIONIST" routerLink="trip-requests" routerLinkActive="active">Viajes</a>
                 <a class="nav-link" *ngIf="authService.user.userType === USER_TYPES.RECEPTIONIST" routerLink="car-requests" routerLinkActive="active">Autos</a>
+                <a class="nav-link" routerLink="profile" routerLinkActive="active">Perfil</a>
                 <div class="d-flex">
                     <a class="btn nav-link" (click)="logOut()">Salir</a>
                 </div>

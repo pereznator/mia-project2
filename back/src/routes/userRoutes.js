@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUser, getAllUsers, removeUser, createUser } = require('../controllers/userController');
+const { getUser, getAllUsers, removeUser, createUser, updateUser } = require('../controllers/userController');
 const { validateUser } = require('../middlewares/authentication');
 
 const router = express.Router();
@@ -15,6 +15,12 @@ router.post('/',
 [
   validateUser,
   createUser
+]
+);
+router.post('/:id', 
+[
+  validateUser,
+  updateUser
 ]
 );
 

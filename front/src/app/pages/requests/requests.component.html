@@ -26,7 +26,8 @@
           <th>Ciudad Destino</th>
           <th>Dias de Vuelo</th>
           <th>Precio</th>
-          <th>Estatus</th>
+          <th>Estado</th>
+          <th>Resultado</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +37,8 @@
           <td>{{req.destination_city}}</td>
           <td>{{req.days}}</td>
           <td>{{req.price}}</td>
-          <td>{{req.approved ? "Aprobado" : "No Aprobado"}}</td>
+          <td>{{req.pending ? "Esperando Resultado" : "Calificado"}}</td>
+          <td>{{req.status}}</td>
         </tr>
       </tbody>
     </table>
@@ -55,7 +57,8 @@
           <th>Modelo</th>
           <th>Precio</th>
           <th>Ciudad</th>
-          <th>Estatus</th>
+          <th>Estado</th>
+          <th>Resultado</th>
         </tr>
       </thead>
       <tbody *ngIf="!loading">
@@ -66,7 +69,8 @@
           <td>{{car.model}}</td>
           <td>{{car.price}}</td>
           <td>{{car.city}}</td>
-          <td>{{car.approved ? "Aprobado" : "No Aprobado"}}</td>
+          <td>{{car.pending ? "Esperando Resultado" : "Calificado"}}</td>
+          <td>{{car.status}}</td>
         </tr>
       </tbody>
     </table>

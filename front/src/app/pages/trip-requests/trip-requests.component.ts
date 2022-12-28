@@ -30,7 +30,6 @@ export class TripRequestsComponent implements OnInit {
   getTrips(): void {
     this.loading = true;
     this.tripsService.getAllActiveReqeusts().pipe(take(1), map(resp => resp.data)).subscribe(resp => {
-      console.log(resp);
       this.trips = resp;
       this.loading = false;
     }, err => {
@@ -39,13 +38,13 @@ export class TripRequestsComponent implements OnInit {
     });
   }
 
-  approveTrip(requestId: string): void {
+  approveTrip(requestId: string, isApproved: boolean): void {
     const modal = this.modalService.open(ConfirmActionComponent);
-    modal.componentInstance.i = "Estas seguro que quieres aprobar la solicitud?";
-    modal.componentInstance.title = "Aprobar Solicitud";
+    modal.componentInstance.i = `Estas seguro que quieres ${isApproved ? "aprobar" : "rechazar"} la solicitud?`;
+    modal.componentInstance.title = `${isApproved ? "Aprobar" : "Rechazar"} Solicitud`;
     modal.result.then(result => {
-      this.tripsService.approveTripRequest(requestId).pipe(take(1), map(resp => resp)).subscribe(resp => {
-        this.toastService.showSuccess("Solicitud aprobada");
+      this.tripsService.approveTripRequest(requestId, {isApproved}).pipe(take(1), map(resp => resp)).subscribe(resp => {
+        this.toastService.showSuccess("Solicitud calificada");
         this.getTrips();
       }, err => {
         console.log(err);

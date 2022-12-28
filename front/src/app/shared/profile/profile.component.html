@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-9">
+      <h1>Perfil</h1>
+    </div>
+    <div class="col-md-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" (click)="save()">Guardar Cambios</button>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="d-grid gap-2">
+        <button class="btn btn-secondary" (click)="goBack()">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <ng-container *ngIf="!loading">
+    <div class="row mt-3">
+      <div class="col-md-2">
+        Nombre
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="user.name">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-2">
+        Usuario
+      </div>
+      <div class="col-md-10">
+        <input type="text" disabled class="form-control" [(ngModel)]="user.username">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-2">
+        Email
+      </div>
+      <div class="col-md-10">
+        <input type="text" disabled class="form-control" [(ngModel)]="user.email">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-2">
+        Imagen
+      </div>
+      <div class="col-md-10">
+        <input type="text" disabled class="form-control" [(ngModel)]="user.picture">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-2">
+        Nueva Imagen
+      </div>
+      <div class="col-md-10">
+        <input type="file" class="form-control" (change)="processFile($event)">
+      </div>
+    </div>
+  </ng-container>
+</div>

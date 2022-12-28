@@ -101,10 +101,11 @@ const getAllActiveRequests = async (req, res) => {
   }
 };
 
-const approveUserCarRequest = async (req, res) => {
+const updateCarRequest = async (req, res) => {
   try {
     const { requestId } = req.params;
-    const [cars, error] = await carsService.approveCarRequest(requestId);
+    const { isApproved } = req.body;
+    const [cars, error] = await carsService.updateCarRequest(requestId, isApproved);
     if (error) {
       errorMessage.error = error;
       return res.status(errorMessage.status).send(errorMessage);
@@ -126,5 +127,5 @@ module.exports = {
   getUserCars,
   reserveCar,
   getAllActiveRequests,
-  approveUserCarRequest
+  updateCarRequest
 };

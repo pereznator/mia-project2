@@ -33,6 +33,7 @@ class CarsService {
       model: carBody.model,
       price: carBody.price,
       city: carBody.city,
+      available: true
     };
     
     cars.push(newCar);
@@ -67,19 +68,37 @@ class CarsService {
     if (!userCars) {
       return [null, "No se encontraron carros"];
     }
+    const cars = await dataService.getCars();
+    if (!cars) {
+      return [null, "No se encontraron autos."]
+    }
+    const reservedCar = cars.find(car => car.liscence_plate === liscencePlate && car.available === false);
+    if (reservedCar) {
+      return [null, "Este auto ya no esta disponible."];
+    }
+
     const foundCar = userCars.find(car => car.liscence_plate === liscencePlate && car.user_id === userId);
     if (foundCar) {
-      return [null, "Ya has reservado el carro seleccionado"];
+      return [null, "Ya has solicitado el carro seleccionado"];
     }
     let newCarRequest = {
       id: uuid(),
       liscence_plate: liscencePlate,
       user_id: userId,
-      approved: false
+      pending: true,
+      status: "esperando"
     };
 
     userCars.push(newCarRequest);
     await dataService.saveUserCars(userCars);
+
+    const carIdx = cars.findIndex(car => car.liscence_plate === liscencePlate);
+    if (carIdx == -1) {
+      return [null, "No se encontro carro."];
+    }
+    cars[carIdx].available = false;
+    await dataService.saveCars(cars);
+
     return [newCarRequest, null];
   }
 
@@ -101,7 +120,8 @@ class CarsService {
       const request = userReserves.find(reserve => reserve.liscence_plate === userCar.liscence_plate);
       return {
         ...userCar,
-        approved: request.approved,
+        status: request.status,
+        pending: request.pending,
         id: request.id
       }
     });
@@ -113,7 +133,7 @@ class CarsService {
     if (!allUserCars) {
       return [null, "No se encontraron carros del usuario"];
     }
-    const activeRequests = allUserCars.filter(request => request.approved === false);
+    const activeRequests = allUserCars.filter(request => request.pending === true);
     const allUsers = await dataService.getUsers();
     const allCars = await dataService.getCars();
 
@@ -129,7 +149,7 @@ class CarsService {
     return [data, null];
   }
 
-  async approveCarRequest(requestId) {
+  async updateCarRequest(requestId, isApproved) {
     const allUserCars = await dataService.getUserCars();
     if (!allUserCars) {
       return [null, "No se encontraron carros del usuario"];
@@ -138,12 +158,21 @@ class CarsService {
     if (foundRequestIndex === -1) {
       return [null, "No se pudo encontrar la solicitud."];
     }
-    if (allUserCars[foundRequestIndex].approved === true) {
-      return [null, "La solicitud ya ha sido aprobada"];
+    if (allUserCars[foundRequestIndex].pending === false) {
+      return [null, "La solicitud ya ha sido calificada"];
     }
 
-    allUserCars[foundRequestIndex].approved = true;
+    allUserCars[foundRequestIndex].pending = false;
+    allUserCars[foundRequestIndex].status = isApproved ? "aprobado" : "rechazado";
     await dataService.saveUserCars(allUserCars);
+
+    if(!isApproved) {
+      const cars = await dataService.getCars();
+      const foundCarIdx = cars.findIndex(car => car.liscence_plate === allUserCars[foundRequestIndex].liscence_plate);
+      cars[foundCarIdx].available = true;
+      await dataService.saveCars(cars);
+    }
+
     return [allUserCars[foundRequestIndex], null];
 
   }

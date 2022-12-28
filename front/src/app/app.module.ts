@@ -21,6 +21,7 @@ import { ToastComponent } from './shared/toast/toast.component';
 import { RequestsComponent } from './pages/requests/requests.component';
 import { TripRequestsComponent } from './pages/trip-requests/trip-requests.component';
 import { CarRequestsComponent } from './pages/car-requests/car-requests.component';
+import { ProfileComponent } from './shared/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CarRequestsComponent } from './pages/car-requests/car-requests.componen
     RequestsComponent,
     TripRequestsComponent,
     CarRequestsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

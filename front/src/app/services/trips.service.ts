@@ -32,8 +32,8 @@ export class TripsService {
     return this.serverService.request("GET", "/trips/reserves/all");
   }
 
-  approveTripRequest(requestId: string): Observable<any> {
-    return this.serverService.request("POST", `/trips/reserves/approve/${requestId}`, {});
+  approveTripRequest(requestId: string, body: any): Observable<any> {
+    return this.serverService.request("POST", `/trips/reserves/approve/${requestId}`, body);
   }
 
 }

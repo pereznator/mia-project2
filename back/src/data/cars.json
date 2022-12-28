@@ -6,15 +6,8 @@
       "brand": "Mazda",
       "model": "cx5",
       "price": "199",
-      "city": "New York"
-    },
-    {
-      "liscence_plate": "3DF3DF",
-      "agency": "Carro loco",
-      "brand": "Audi",
-      "model": "a4",
-      "price": "699",
-      "city": "Qatar"
+      "city": "New York",
+      "available": false
     },
     {
       "liscence_plate": "CTR345",
@@ -22,7 +15,8 @@
       "brand": "Tesla",
       "model": "Model X",
       "price": "899",
-      "city": "Detroit"
+      "city": "Detroit",
+      "available": true
     },
     {
       "liscence_plate": "FUS256",
@@ -30,7 +24,17 @@
       "brand": "Toyota",
       "model": "Corolla",
       "price": "59",
-      "city": "Cleveland"
+      "city": "Cleveland",
+      "available": true
+    },
+    {
+      "liscence_plate": "AMD129",
+      "agency": "Carro loco",
+      "brand": "Mercedes",
+      "model": "M1",
+      "price": "566",
+      "city": "Miami",
+      "available": false
     }
   ]
 }

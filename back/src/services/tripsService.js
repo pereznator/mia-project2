@@ -71,7 +71,7 @@ class TripsService {
         if (!userTrips) {
             return [null, "No se encontraron solicitudes de viajes"];
         }
-        const foundRequest = userTrips.find(trip => trip.trip_id === tripId && trip.user_id);
+        const foundRequest = userTrips.find(trip => trip.trip_id === tripId && trip.user_id === userId);
         if (foundRequest) {
             return [null, "Ya has reservado el viaje seleccionado."];
         }
@@ -79,7 +79,8 @@ class TripsService {
             id: uuid(),
             user_id: userId,
             trip_id: tripId,
-            approved: false
+            pending: true,
+            status: "esperando"
         };
 
         userTrips.push(newRequest);
@@ -110,7 +111,8 @@ class TripsService {
           const userRequest = userReserves.find(reserve => reserve.trip_id === userTrip.id);
           return {
               ...userTrip,
-              approved: userRequest.approved,
+              pending: userRequest.pending,
+              status: userRequest.status,
               id: userRequest.id
           }
       });
@@ -126,7 +128,7 @@ class TripsService {
       if (!allUserTrips) {
         return [null, "No se encontraron solicitudes de viajes."];
       }
-      const activeRequests = allUserTrips.filter(request => request.approved === false);
+      const activeRequests = allUserTrips.filter(request => request.pending === true);
       const allUsers = await dataService.getUsers();
       const allTrips = await dataService.getTrips();
 
@@ -142,7 +144,7 @@ class TripsService {
       return [data, null];
     }
 
-  async approveUserTrip(requestId) {
+  async updateRequest(requestId, isApproved) {
     const allUserTrips = await dataService.getUserTrips();
     if (!allUserTrips) {
       return [null, "No se encontraron carros del usuario"];
@@ -151,11 +153,12 @@ class TripsService {
     if (foundRequestIndex === -1) {
       return [null, "No se pudo encontrar la solicitud."];
     }
-    if (allUserTrips[foundRequestIndex].approved === true) {
-      return [null, "La solicitud ya ha sido aprobada"];
+    if (allUserTrips[foundRequestIndex].pending === false) {
+      return [null, "La solicitud ya ha sido calificada"];
     }
 
-    allUserTrips[foundRequestIndex].approved = true;
+    allUserTrips[foundRequestIndex].pending = false;
+    allUserTrips[foundRequestIndex].status = isApproved ? "aprobado" : "rechazado";
     await dataService.saveUserTrips(allUserTrips);
     return [allUserTrips[foundRequestIndex], null];
   }
