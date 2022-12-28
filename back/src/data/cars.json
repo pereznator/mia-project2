@@ -25,7 +25,7 @@
       "model": "Corolla",
       "price": "59",
       "city": "Cleveland",
-      "available": true
+      "available": false
     },
     {
       "liscence_plate": "AMD129",

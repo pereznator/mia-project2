@@ -27,6 +27,13 @@
       "user_id": "440d564d-acc1-4084-9c9f-9a76e1579cf2",
       "pending": false,
       "status": "rechazado"
+    },
+    {
+      "id": "5ba8c6d8-91bb-4db0-9d71-62a2cfd4265c",
+      "liscence_plate": "FUS256",
+      "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
+      "pending": true,
+      "status": "esperando"
     }
   ]
 }
