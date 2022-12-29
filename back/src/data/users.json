@@ -9,36 +9,6 @@
       "picture": "https://mia-picture-bucket.s3.amazonaws.com/adminator.jpg",
       "password": "Admin2022",
       "verified": true
-    },
-    {
-      "id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
-      "name": "Jon Snowy",
-      "username": "jonSnow",
-      "type": "tourist",
-      "email": "jorgeperezlj@gmail.com",
-      "picture": "https://mia-picture-bucket.s3.amazonaws.com/jonSnow.jpg",
-      "password": "Casaca2000",
-      "verified": true
-    },
-    {
-      "id": "28b95757-f96a-4f23-9bf3-6a0d75c7ada9",
-      "name": "Pam Beesly",
-      "username": "pamy",
-      "type": "receptionist",
-      "email": "jorigot.servicios@gmail.com",
-      "picture": "https://mia-picture-bucket.s3.amazonaws.com/pamy.jpg",
-      "password": "Casaca2000",
-      "verified": true
-    },
-    {
-      "id": "440d564d-acc1-4084-9c9f-9a76e1579cf2",
-      "name": "Barack Obama",
-      "username": "Obunga",
-      "type": "tourist",
-      "email": "jorigot.2000@gmail.com",
-      "picture": "https://appweb-201900810-p2.s3.amazonaws.com/Obunga.jpg",
-      "password": "Casaca2000",
-      "verified": true
     }
   ]
 }

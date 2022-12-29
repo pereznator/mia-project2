@@ -14,13 +14,15 @@ import { Location } from '@angular/common';
 })
 export class CreateUserComponent implements OnInit {
 
+  passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
   userForm: FormGroup = this.fb.group({
     name: [null, [Validators.required]],
-    username: [null, [Validators.required]],
-    email: [null, [Validators.required]],
+    username: [null, [Validators.required, Validators.minLength(5)]],
+    email: [null, [Validators.required, Validators.email]],
     picture: [null, []],
     type: [null, [Validators.required]],
-    password: [null, [Validators.required]],
+    password: [null, [Validators.required, Validators.minLength(8), Validators.pattern(this.passwordPattern)]],
     repeatPassword: [null, [Validators.required]],
   });
 
@@ -55,7 +57,7 @@ export class CreateUserComponent implements OnInit {
     return this.userForm.get("password").invalid && this.userForm.get("password").touched;
   }
   get notValidRepeatPassword(): boolean {
-    return this.userForm.get("repeatPassword").invalid && (this.userForm.get("repeatPassword").touched || (this.userForm.get("repeatPassword").value !== this.userForm.get("password").value));
+    return this.userForm.get("repeatPassword").touched && (this.userForm.get("repeatPassword").invalid || (this.userForm.get("repeatPassword").value !== this.userForm.get("password").value));
   }
 
   processFile(imageInput: any): void {

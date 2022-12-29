@@ -11,12 +11,14 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
   registerForm: FormGroup = this.fb.group({
     name: [null, [Validators.required]],
-    username: [null, [Validators.required]],
-    email: [null, [Validators.required]],
+    username: [null, [Validators.required, Validators.minLength(5)]],
+    email: [null, [Validators.required, Validators.email]],
     picture: [null, []],
-    password: [null, [Validators.required]],
+    password: [null, [Validators.required, Validators.pattern(this.passwordPattern)]],
     repeatPassword: [null, [Validators.required]],
   });
 

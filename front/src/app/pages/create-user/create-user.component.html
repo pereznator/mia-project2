@@ -24,6 +24,9 @@
       <div class="col-md">
         <label for="username" class="form-label">Usuario</label>
         <input type="text" class="form-control" id="username" placeholder="usuario" formControlName="username" [ngClass]="{'is-invalid': notValidUsername}">
+        <div class="invalid-feedback" *ngIf="notValidUsername">
+          El usuario debe tener por lo menos 5 caracteres.
+        </div>
       </div>
     </div>
     <div class="row mt-2">
@@ -37,6 +40,9 @@
       <div class="col-md">
         <label for="email" class="form-label">Correo</label>
         <input type="email" class="form-control" id="email" placeholder="correo@email.com" formControlName="email" [ngClass]="{'is-invalid': notValidEmail}">
+        <div class="invalid-feedback" *ngIf="notValidEmail">
+          El correo debe tener la estructura adecuada.
+        </div>
       </div>
     </div>
     <div class="row mt-2">
@@ -49,6 +55,9 @@
       <div class="col-md">
         <label for="password" class="form-label">Contraseña</label>
         <input type="password" class="form-control" id="password" placeholder="contraseña" formControlName="password" [ngClass]="{'is-invalid': notValidPassword}">
+        <div class="invalid-feedback" *ngIf="notValidPassword">
+          La contraseña debe tener al menos 8 caracters, una letra y un numero.
+        </div>
       </div>
     </div>
     <div class="row mt-2">

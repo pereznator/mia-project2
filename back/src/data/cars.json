@@ -1,40 +1,4 @@
 {
   "cars": [
-    {
-      "liscence_plate": "RTX4200",
-      "agency": "Cars 2",
-      "brand": "Mazda",
-      "model": "cx5",
-      "price": "199",
-      "city": "New York",
-      "available": false
-    },
-    {
-      "liscence_plate": "CTR345",
-      "agency": "G Trips",
-      "brand": "Tesla",
-      "model": "Model X",
-      "price": "899",
-      "city": "Detroit",
-      "available": true
-    },
-    {
-      "liscence_plate": "FUS256",
-      "agency": "AgencyX1",
-      "brand": "Toyota",
-      "model": "Corolla",
-      "price": "59",
-      "city": "Cleveland",
-      "available": false
-    },
-    {
-      "liscence_plate": "AMD129",
-      "agency": "Carro loco",
-      "brand": "Mercedes",
-      "model": "M1",
-      "price": "566",
-      "city": "Miami",
-      "available": false
-    }
   ]
 }

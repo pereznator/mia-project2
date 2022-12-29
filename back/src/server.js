@@ -29,6 +29,6 @@ app.use("/trips", tripRoutes);
 app.use("/cars", carsRoutes);
 
 //resetData()
-//createAdminUser();
+createAdminUser();
 
 module.exports = app;

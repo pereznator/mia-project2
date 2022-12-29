@@ -1,32 +1,4 @@
 {
   "userTrip": [
-    {
-      "id": "4a82ebd9-ede8-49bb-ad1c-39b8557720ba",
-      "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
-      "trip_id": "2665935d-da7a-44c6-9cf4-306fc5e98e1b",
-      "pending": false,
-      "status": "rechazado"
-    },
-    {
-      "id": "033f6025-a6f0-4a6b-8eb7-0c5e21f4b8e1",
-      "user_id": "440d564d-acc1-4084-9c9f-9a76e1579cf2",
-      "trip_id": "f27f4e90-6ddf-4c51-a03b-68db855cad76",
-      "pending": false,
-      "status": "rechazado"
-    },
-    {
-      "id": "029eb758-2378-4a66-b0de-55061dd730d4",
-      "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
-      "trip_id": "b2ca332d-b813-49fb-9366-9b55d47f5419",
-      "pending": false,
-      "status": "aprobado"
-    },
-    {
-      "id": "53480c8c-b478-46ce-a0ab-c868609fa925",
-      "user_id": "08d7b3c8-bd07-4bb3-a882-eeec5eba4bf3",
-      "trip_id": "f27f4e90-6ddf-4c51-a03b-68db855cad76",
-      "pending": false,
-      "status": "aprobado"
-    }
   ]
 }

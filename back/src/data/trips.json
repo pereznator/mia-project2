@@ -1,31 +1,4 @@
 {
   "trips": [
-    {
-      "id": "b2ca332d-b813-49fb-9366-9b55d47f5419",
-      "agency": "La agencia",
-      "origin_city": "Guatemala",
-      "destination_city": "New York",
-      "days": "2022/12/25 - 2022/12/31",
-      "price": "1500",
-      "picture": null
-    },
-    {
-      "id": "f27f4e90-6ddf-4c51-a03b-68db855cad76",
-      "agency": "La agencia",
-      "origin_city": "Estambul",
-      "destination_city": "Quito",
-      "days": "2022/01/25 - 2023/01/29",
-      "price": "699",
-      "picture": null
-    },
-    {
-      "id": "2665935d-da7a-44c6-9cf4-306fc5e98e1b",
-      "agency": "TripsGO",
-      "origin_city": "Ciudad de Mexico",
-      "destination_city": "Paris",
-      "days": "2022/12/25 - 2023/01/05",
-      "price": "1499",
-      "picture": null
-    }
   ]
 }

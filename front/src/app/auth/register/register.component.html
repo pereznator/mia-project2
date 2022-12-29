@@ -13,6 +13,9 @@
           <div class="form-floating mb-3">
             <input type="text" placeholder="asdf" class="form-control" id="usernameInput" formControlName="username" [ngClass]="{'is-invalid': notValidUsername}">
             <label for="usernameInput">Nombre de Usuario</label>
+            <div class="invalid-feedback" *ngIf="notValidUsername">
+              El usuario debe tener por lo menos 5 caracteres.
+            </div>
           </div>
         </div>
       </div>
@@ -20,7 +23,10 @@
         <div class="col-md">
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" [ngClass]="{'is-invalid': notValidEmail}">
-            <label for="floatingInput">Correo Electronico / Usuario</label>
+            <label for="floatingInput">Correo Electronico</label>
+            <div class="invalid-feedback" *ngIf="notValidEmail">
+              El correo debe tener la estructura adecuada.
+            </div>
           </div>
         </div>
         <div class="col-md">
@@ -28,10 +34,6 @@
             <input type="file" class="form-control" id="picture" accept="image/*" (change)="processFile($event)" formControlName="picture">
             <label class="input-group-text" for="picture">Imagen</label>
           </div>
-          <!--div class="form-floating mb-3">
-            <input type="text" class="form-control" id="pictureInput" placeholder="name@example.com" formControlName="picture" [ngClass]="{'is-invalid': notValidPicture}">
-            <label for="pictureInput">Foto de Perfil</label>
-          </div-->
         </div>
       </div>
       <div class="row">
@@ -39,6 +41,9 @@
           <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="password" [ngClass]="{'is-invalid': notValidPassword}">
             <label for="floatingPassword">Contraseña</label>
+            <div class="invalid-feedback" *ngIf="notValidPassword">
+              La contraseña debe tener al menos 8 caracters, una letra y un numero.
+            </div>
           </div>
         </div>
         <div class="col-md">

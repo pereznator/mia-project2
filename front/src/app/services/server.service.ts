@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ServerService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   request(method: string, url: string, body?: any, queryParams?: any): Observable<any> {
-    const requestUrl = `http://localhost:3000${url}`;
+    const requestUrl = `${environment.api_url}${url}`;
     let headerData = {
       userid: this.authService.user.userId
     };
