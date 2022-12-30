@@ -33,7 +33,6 @@ export class AuthService {
 
   login(body: any): Observable<any> {
     const requestUrl = `${environment.api_url}/auth/login`;
-    //const requestUrl = `http://54.89.223.162:3000/auth/login`;
     let headerData = {};
     let headers = new HttpHeaders(headerData);
     let params = {};
