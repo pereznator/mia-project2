@@ -13,6 +13,7 @@ export class ServerService {
 
   request(method: string, url: string, body?: any, queryParams?: any): Observable<any> {
     const requestUrl = `${environment.api_url}${url}`;
+    //const requestUrl = `http://54.89.223.162:3000${url}`;
     let headerData = {
       userid: this.authService.user.userId
     };

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,8 @@ export class AuthService {
   }
 
   login(body: any): Observable<any> {
-    const requestUrl = `http://localhost:3000/auth/login`;
+    const requestUrl = `${environment.api_url}/auth/login`;
+    //const requestUrl = `http://54.89.223.162:3000/auth/login`;
     let headerData = {};
     let headers = new HttpHeaders(headerData);
     let params = {};
@@ -45,7 +47,7 @@ export class AuthService {
     return returnObservable;
   }
   register(body: any): Observable<any> {
-    const requestUrl = `http://localhost:3000/auth/register`;
+    const requestUrl = `${environment.api_url}/auth/register`;
     let headerData = {};
     let headers = new HttpHeaders(headerData);
 
